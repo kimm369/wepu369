@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.id %}
+       Edit task{% else %}Creat Task {% endif %}</title>
+</head>
+<body>
+<h1>Task details</h1>
+<p>Title: {{ tasK.description }}</p>
+<p>Description: {{ tasK.description }}</p>
+<p>Completed: {{ tasK.completed }}</p>
+<p>Created: {{ tasK.created_at }}</p>
+<a href="{% url 'task_edit' tasK.id %}">Edit</a>
+<form action="{% url 'tasK.delete' tasK.id %}"
+    method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+ <a href="{% url 'task_list' %}">Back to List</a>
+</body>
+</html>
